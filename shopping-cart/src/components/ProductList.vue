@@ -29,7 +29,7 @@
 
     computed: {
       ...mapState({
-        products: state => state.products
+        products: state => state.products.items
       }),
       ...mapGetters({
         productIsInStock: 'productIsInStock'
@@ -45,7 +45,7 @@
 
     created () {
       this.loading = true
-      this.fetchProducts()
+      this.$store.dispatch('fetchProducts')
         .then(() => this.loading = false)
     }
   }
